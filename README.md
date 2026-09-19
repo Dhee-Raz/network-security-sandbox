@@ -111,6 +111,19 @@ The security controls successfully restricted unauthorized communication between
 
 After firewall implementation:
 
+### Before vs. After Security Controls
+
+| Test from B.1 (Kali) | Before Security Policy | After pfSense Policy |
+|---|---|---|
+| A.1 Ping             | Allowed.               | Blocked               |
+| A.1 HTTP (TCP/80)    | Allowed                | Allowed               |
+| A.1 SSH (TCP/22)     | Allowed                | Blocked               |
+| A.2 Ping             | Allowed                | Blocked               |
+| A.2 HTTP             | service not running    | Blocked/Filtered.     |
+| A.2 SSH              | service not running.   | Blocked/Filtered      |
+
+The results demonstrate that the firewall policy reduced externally accessible services while preserving the intentionally permitted HTTP service on the Ubuntu server.
+
 - External systems could access the permitted HTTP service on the internal server.
 - Unauthorized SSH access from the external network was blocked.
 - External ICMP access to internal systems was restricted.
