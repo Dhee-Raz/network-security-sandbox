@@ -53,6 +53,50 @@ The environment was tested using:
 
 Testing was performed before and after firewall implementation to determine how the security controls affected network communication.
 
+## Technical Evidence
+
+### Virtual Lab Environment
+
+The security sandbox was implemented using multiple virtual machines connected through isolated VirtualBox networks and a pfSense router/firewall.
+
+![VirtualBox Environment](screenshots/virtualbox-environment.png)
+
+### Network Discovery — Before Firewall Implementation
+
+A baseline Nmap scan was performed from the Kali Linux testing machine to identify reachable hosts and exposed services before applying the security policy.
+
+The Ubuntu server initially exposed both SSH (TCP/22) and HTTP (TCP/80).
+
+![Baseline Nmap Scan](screenshots/nmap-baseline.png)
+
+### Network Discovery — After Firewall Implementation
+
+After implementing the pfSense access-control policy, another Nmap scan was performed from the external network.
+
+The Ubuntu server remained accessible through the permitted HTTP service on TCP/80, while other scanned TCP ports were filtered. The Windows XP workstation did not expose scanned TCP services to the external network.
+
+![Post-Firewall Nmap Scan](screenshots/nmap-after-firewall.png)
+
+### pfSense Firewall Configuration
+
+Network-level access controls were implemented on pfSense to regulate communication between Network A and Network B.
+
+![pfSense Firewall Rules](screenshots/pfsense-firewall-rules.png)
+
+### Packet Analysis with Wireshark
+
+Wireshark was used to inspect network traffic and verify whether security policies were operating as expected. The following capture demonstrates permitted HTTP communication between the external testing system and the Ubuntu web server.
+
+![Wireshark HTTP Analysis](screenshots/wireshark-http-analysis.png)
+
+### Host-Based Firewall with Linux iptables
+
+Because hosts on the same subnet can communicate without traversing the pfSense router, additional host-level controls were implemented on the Ubuntu server using Linux iptables.
+
+The rules permitted required ICMP, HTTP, and SSH traffic from the internal workstation while dropping other traffic from that host.
+
+![Linux iptables Rules](screenshots/iptables-rules.png)
+
 ## Firewall Implementation
 
 Network-level access-control rules were implemented using pfSense.
