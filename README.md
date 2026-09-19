@@ -10,6 +10,8 @@ The project focused on network segmentation, service discovery, firewall configu
 
 ## Network Architecture
 
+![Network Security Sandbox Topology](docs/network-topology.png)
+
 ### Network A — Internal Network
 - Ubuntu Linux server
 - Windows XP workstation
