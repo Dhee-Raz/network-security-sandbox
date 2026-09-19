@@ -142,9 +142,3 @@ The results demonstrate that the firewall policy reduced externally accessible s
 - Packet analysis
 - TCP/IP troubleshooting
 - Security testing
-
-## Project Context
-
-This project was completed as part of Computer Security coursework at Texas State University.
-
-The initial virtual environment setup and network/service configuration were completed individually. Security-policy development, firewall implementation, testing, and verification were completed collaboratively as part of a three-person team.
