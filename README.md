@@ -75,7 +75,9 @@ After implementing the pfSense access-control policy, another Nmap scan was perf
 
 The Ubuntu server remained accessible through the permitted HTTP service on TCP/80, while other scanned TCP ports were filtered. The Windows XP workstation did not expose scanned TCP services to the external network.
 
-![Post-Firewall Nmap Scan](screenshots/nmap-after-firewall.png)
+![Post-Firewall Nmap Scan](screenshots/nmap-A1 after firewall.png)
+![Post-Firewall Nmap Scan](screenshots/nmap-a2 after firewall.png)
+
 
 ### pfSense Firewall Configuration
 
@@ -87,7 +89,7 @@ Network-level access controls were implemented on pfSense to regulate communicat
 
 Wireshark was used to inspect network traffic and verify whether security policies were operating as expected. The following capture demonstrates permitted HTTP communication between the external testing system and the Ubuntu web server.
 
-![Wireshark HTTP Analysis](screenshots/wireshark-http-analysis.png)
+![Wireshark HTTP Analysis](screenshots/wireshark-http.png)
 
 ### Host-Based Firewall with Linux iptables
 
@@ -95,7 +97,7 @@ Because hosts on the same subnet can communicate without traversing the pfSense 
 
 The rules permitted required ICMP, HTTP, and SSH traffic from the internal workstation while dropping other traffic from that host.
 
-![Linux iptables Rules](screenshots/iptables-rules.png)
+![Linux iptables Rules](screenshots/iptables.png)
 
 ## Firewall Implementation
 
